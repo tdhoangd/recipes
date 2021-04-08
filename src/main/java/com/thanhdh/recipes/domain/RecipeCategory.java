@@ -20,9 +20,9 @@ import java.util.UUID;
 public class RecipeCategory extends BaseEntity {
 
     @Builder
-    public RecipeCategory(UUID id, Timestamp created, Timestamp updated, boolean isDeleted,
-                          Recipe recipe, Category category) {
-        super(id, created, updated, isDeleted);
+    public RecipeCategory(UUID id, Long version, Timestamp created, Timestamp updated,
+                          boolean isDeleted, Recipe recipe, Category category) {
+        super(id, version, created, updated, isDeleted);
         this.recipe = recipe;
         this.category = category;
     }

@@ -1,5 +1,6 @@
 package com.thanhdh.recipes.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,9 +19,10 @@ import java.util.UUID;
 @Table(name = "recipe_instructions")
 public class RecipeInstruction extends BaseEntity {
 
-    public RecipeInstruction(UUID id, Timestamp created, Timestamp updated, boolean isDeleted,
-                             Recipe recipe, Instruction instruction) {
-        super(id, created, updated, isDeleted);
+    @Builder
+    public RecipeInstruction(UUID id, Long version, Timestamp created, Timestamp updated,
+                             boolean isDeleted, Recipe recipe, Instruction instruction) {
+        super(id, version, created, updated, isDeleted);
         this.recipe = recipe;
         this.instruction = instruction;
     }
@@ -31,3 +33,5 @@ public class RecipeInstruction extends BaseEntity {
     @ManyToOne(cascade = CascadeType.MERGE)
     private Instruction instruction;
 }
+
+

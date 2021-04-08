@@ -1,6 +1,5 @@
 package com.thanhdh.recipes.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,10 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -21,8 +17,9 @@ import java.util.UUID;
 @MappedSuperclass
 public class BaseEntity {
 
-    public BaseEntity(UUID id, Timestamp created, Timestamp updated, boolean isDeleted) {
+    public BaseEntity(UUID id, Long version, Timestamp created, Timestamp updated, boolean isDeleted) {
         this.id = id;
+        this.version = version;
         this.created = created;
         this.updated = updated;
         this.isDeleted = isDeleted;
@@ -36,6 +33,9 @@ public class BaseEntity {
     )
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
+
+    @Version
+    private Long version;
 
     @CreationTimestamp
     @Column(updatable = false)

@@ -17,22 +17,22 @@ import java.util.UUID;
 @Table(name = "recipes")
 public class Recipe extends BaseEntity{
 
-    @Builder
-    public Recipe(UUID id, Timestamp created, Timestamp updated, boolean isDeleted,
-                  String recipeTitle, String imageUrl, boolean isPrivate,
-                  List<RecipeCategory> recipeCategories, List<RecipeInstruction> recipeInstructions) {
-        super(id, created, updated, isDeleted);
-        this.recipeTitle = recipeTitle;
-        this.imageUrl = imageUrl;
-        this.isPrivate = isPrivate;
-        this.recipeCategories = recipeCategories;
-        this.recipeInstructions = recipeInstructions;
-    }
+//    @Builder
+//    public Recipe(UUID id, Timestamp created, Timestamp updated, boolean isDeleted,
+//                  String recipeTitle, String imageUrl, boolean isPrivate,
+//                  List<RecipeCategory> recipeCategories, List<RecipeInstruction> recipeInstructions) {
+//        super(id, created, updated, isDeleted);
+//        this.recipeTitle = recipeTitle;
+//        this.imageUrl = imageUrl;
+//        this.isPrivate = isPrivate;
+//        this.recipeCategories = recipeCategories;
+//        this.recipeInstructions = recipeInstructions;
+//    }
 
     @Column(length = 50, columnDefinition = "varchar(50)", nullable = false)
     private String recipeTitle;
 
-    private String imageUrl;
+    private String mainImageUrl;
 
     @Column(columnDefinition = "boolean default true")
     private boolean isPrivate;

@@ -14,8 +14,9 @@ import java.util.UUID;
 public class Category extends BaseEntity {
 
     @Builder
-    public Category(UUID id, Timestamp created, Timestamp updated, boolean isDeleted, String name, boolean isDefault) {
-        super(id, created, updated, isDeleted);
+    public Category(UUID id, Long version, Timestamp created, Timestamp updated,
+                    boolean isDeleted, String name, boolean isDefault) {
+        super(id, version, created, updated, isDeleted);
         this.name = name;
         this.isDefault = isDefault;
     }

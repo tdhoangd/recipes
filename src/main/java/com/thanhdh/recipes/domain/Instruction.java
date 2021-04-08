@@ -18,13 +18,14 @@ import java.util.UUID;
 public class Instruction extends BaseEntity {
 
     @Builder
-    public Instruction(UUID id, Timestamp created, Timestamp updated, boolean isDeleted,
-                       Integer stepId, String description, String imageUrl) {
-        super(id, created, updated, isDeleted);
+    public Instruction(UUID id, Long version, Timestamp created, Timestamp updated,
+                       boolean isDeleted, Integer stepId, String description, String imageUrl) {
+        super(id, version, created, updated, isDeleted);
         this.stepId = stepId;
         this.description = description;
         this.imageUrl = imageUrl;
     }
+
 
     private Integer stepId;
     private String description;
